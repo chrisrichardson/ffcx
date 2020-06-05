@@ -146,8 +146,6 @@ def reflection_entities_from_subdofmap(ufl_element):
 
     reflections = [None for i in range(num_dofs)]
     # Iterate through the entities of the reference element
-    print(entity_dofs)
-    print(entity_counts)
     for dim in range(1, tdim):
         for entity_n in range(entity_counts[dim]):
             dofs = entity_dofs[dim][entity_n]
