@@ -82,8 +82,8 @@ def main(args=None):
             code_h, code_c = compiler.compile_ufl_objects(
                 ufd.elements, ufd.object_names, prefix=prefix, parameters=parameters, visualise=xargs.visualise)
         else:
-            code_h, code_c = compiler.compile_ufl_objects(ufd.meshes, ufd.object_names, prefix=prefix,
-                                                          parameters=parameters, visualise=xargs.visualise)
+            code_h, code_c = compiler.compile_ufl_objects(
+                ufd.meshes, ufd.object_names, prefix=prefix, parameters=parameters, visualise=xargs.visualise)
 
         # Write to file
         formatting.write_code(code_h, code_c, prefix, xargs.output_directory)
