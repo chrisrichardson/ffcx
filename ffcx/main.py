@@ -78,9 +78,12 @@ def main(args=None):
         if len(ufd.forms) > 0:
             code_h, code_c = compiler.compile_ufl_objects(
                 ufd.forms, ufd.object_names, prefix=prefix, parameters=parameters, visualise=xargs.visualise)
-        else:
+        elif len(ufd.elements) > 0:
             code_h, code_c = compiler.compile_ufl_objects(
                 ufd.elements, ufd.object_names, prefix=prefix, parameters=parameters, visualise=xargs.visualise)
+        else:
+            code_h, code_c = compiler.compile_ufl_objects(ufd.meshes, ufd.object_names, prefix=prefix,
+                                                          parameters=parameters, visualise=xargs.visualise)
 
         # Write to file
         formatting.write_code(code_h, code_c, prefix, xargs.output_directory)
