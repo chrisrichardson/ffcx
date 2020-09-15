@@ -4,8 +4,8 @@ import subprocess
 import string
 import setuptools
 
-if sys.version_info < (3, 5):
-    print("Python 3.5 or higher required, please upgrade.")
+if sys.version_info < (3, 6):
+    print("Python 3.6 or higher required, please upgrade.")
     sys.exit(1)
 
 on_rtd = os.environ.get('READTHEDOCS') == 'True'
@@ -21,8 +21,6 @@ else:
         "fenics-fiat{}".format(RESTRICT_REQUIREMENTS),
         "fenics-ufl{}".format(RESTRICT_REQUIREMENTS),
     ]
-
-URL = "https://github.com/FEniCS/ffcx/"
 
 ENTRY_POINTS = {'console_scripts': ['ffcx = ffcx.__main__:main', 'ffcx-3 = ffcx.__main__:main']}
 
@@ -43,8 +41,9 @@ Operating System :: MacOS :: MacOS X
 Operating System :: Microsoft :: Windows
 Programming Language :: Python
 Programming Language :: Python :: 3
-Programming Language :: Python :: 3.5
 Programming Language :: Python :: 3.6
+Programming Language :: Python :: 3.7
+Programming Language :: Python :: 3.8
 Topic :: Scientific/Engineering :: Mathematics
 Topic :: Software Development :: Libraries :: Python Modules
 Topic :: Software Development :: Code Generators
@@ -110,7 +109,7 @@ def run_install():
                          'write_to_template': '__version__ = "{version}"',
                          'parentdir_prefix_version': 'fenics-ffcx-'},
         setup_requires=["setuptools_scm"],
-        url=URL,
+        url="https://github.com/FEniCS/ffcx/",
         platforms=["Windows", "Linux", "Solaris", "Mac OS-X", "Unix"],
         packages=[
             "ffcx",
