@@ -11,13 +11,17 @@ FFC compiles finite element variational forms into C code.
 """
 
 import logging
-
+from importlib.metadata import version, PackageNotFoundError
 import pkg_resources
 
 # Import default parameters
 from ffcx.parameters import default_parameters  # noqa: F401
 
-# __version__ = pkg_resources.get_distribution("fenics-ffcx").version
+try:
+    __version__ = version(__name__)
+except PackageNotFoundError:
+    # package is not installed
+   pass
 
 logging.basicConfig()
 logger = logging.getLogger("ffcx")
