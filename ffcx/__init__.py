@@ -11,8 +11,7 @@ FFC compiles finite element variational forms into C code.
 """
 
 import logging
-from ffcx.version import __version__
-import pkg_resources
+from ffcx.version import __version__  # noqa: F401
 
 # Import default parameters
 from ffcx.parameters import default_parameters  # noqa: F401

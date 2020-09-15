@@ -107,7 +107,7 @@ def run_install():
         author_email="fenics-dev@googlegroups.com",
         maintainer_email="fenics-dev@googlegroups.com",
         use_scm_version={'write_to': 'ffcx/version.py',
-                         'write_to_template':'__version__="{version}"',
+                         'write_to_template': '__version__ = "{version}"',
                          'parentdir_prefix_version': 'fenics-ffcx-'},
         setup_requires=["setuptools_scm"],
         url=URL,
