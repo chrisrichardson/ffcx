@@ -131,7 +131,8 @@ def compile_elements(elements, parameters=None, cache_dir=None, timeout=10, cffi
     except Exception:
         # remove c file so that it will not timeout next time
         c_filename = cache_dir.joinpath(module_name + ".c")
-        os.replace(c_filename, c_filename.with_suffix(".c.failed"))
+        if os.path.exists(c_filename):
+            os.replace(c_filename, c_filename.with_suffix(".c.failed"))
         raise
 
     objects, module = _load_objects(cache_dir, module_name, names)
@@ -176,7 +177,8 @@ def compile_forms(forms, parameters=None, cache_dir=None, timeout=10, cffi_extra
     except Exception:
         # remove c file so that it will not timeout next time
         c_filename = cache_dir.joinpath(module_name + ".c")
-        os.replace(c_filename, c_filename.with_suffix(".c.failed"))
+        if os.path.exists(c_filename):
+            os.replace(c_filename, c_filename.with_suffix(".c.failed"))
         raise
 
     obj, module = _load_objects(cache_dir, module_name, form_names)
@@ -225,7 +227,8 @@ def compile_expressions(expressions, parameters=None, cache_dir=None, timeout=10
     except Exception:
         # remove c file so that it will not timeout next time
         c_filename = cache_dir.joinpath(module_name + ".c")
-        os.replace(c_filename, c_filename.with_suffix(".c.failed"))
+        if os.path.exists(c_filename):
+            os.replace(c_filename, c_filename.with_suffix(".c.failed"))
         raise
 
     obj, module = _load_objects(cache_dir, module_name, expr_names)
@@ -268,7 +271,8 @@ def compile_coordinate_maps(meshes, parameters=None, cache_dir=None, timeout=10,
     except Exception:
         # remove c file so that it will not timeout next time
         c_filename = cache_dir.joinpath(module_name + ".c")
-        os.replace(c_filename, c_filename.with_suffix(".c.failed"))
+        if os.path.exists(c_filename):
+            os.replace(c_filename, c_filename.with_suffix(".c.failed"))
         raise
 
     obj, module = _load_objects(cache_dir, module_name, cmap_names)
