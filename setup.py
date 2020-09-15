@@ -114,6 +114,8 @@ def run_install():
         license="LGPL version 3 or later",
         author_email="fenics-dev@googlegroups.com",
         maintainer_email="fenics-dev@googlegroups.com",
+        use_scm_version=True,
+        setup_requires=["setuptools_scm"],
         url=URL,
         download_url=tarball(),
         platforms=["Windows", "Linux", "Solaris", "Mac OS-X", "Unix"],
