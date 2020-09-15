@@ -9,18 +9,7 @@
 
 #pragma once
 
-#define UFC_VERSION_MAJOR 2018
-#define UFC_VERSION_MINOR 1
-#define UFC_VERSION_MAINTENANCE 0
-#define UFC_VERSION_RELEASE 0
-
-#if UFC_VERSION_RELEASE
-#define UFC_VERSION                                                            \
-  UFC_VERSION_MAJOR "." UFC_VERSION_MINOR "." UFC_VERSION_MAINTENANCE
-#else
-#define UFC_VERSION                                                            \
-  UFC_VERSION_MAJOR "." UFC_VERSION_MINOR "." UFC_VERSION_MAINTENANCE ".dev0"
-#endif
+#define UFC_VERSION 2020.0.0
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -227,7 +216,7 @@ extern "C"
     /// Return topological dimension of the coordinate_mapping
     int topological_dimension;
 
-    /// Boolean flag for affine 
+    /// Boolean flag for affine
     int is_affine;
 
     /// Return cell shape of the coordinate_mapping

@@ -106,7 +106,9 @@ def run_install():
         license="LGPL version 3 or later",
         author_email="fenics-dev@googlegroups.com",
         maintainer_email="fenics-dev@googlegroups.com",
-        use_scm_version=True,
+        use_scm_version={'write_to': 'ffcx/version.py',
+                         'write_to_template':'__version__="{version}"',
+                         'parentdir_prefix_version': 'fenics-ffcx-'},
         setup_requires=["setuptools_scm"],
         url=URL,
         platforms=["Windows", "Linux", "Solaris", "Mac OS-X", "Unix"],
@@ -119,7 +121,6 @@ def run_install():
         ],
         package_dir={"ffcx": "ffcx"},
         package_data={"ffcx": [os.path.join('codegeneration', '*.h')]},
-        # scripts=scripts,  # Using entry_points instead
         entry_points=entry_points,
         install_requires=REQUIREMENTS,
         zip_safe=False)
