@@ -3,6 +3,7 @@ import sys
 import subprocess
 import string
 import setuptools
+import setuptools_scm
 
 if sys.version_info < (3, 6):
     print("Python 3.6 or higher required, please upgrade.")
@@ -10,7 +11,9 @@ if sys.version_info < (3, 6):
 
 on_rtd = os.environ.get('READTHEDOCS') == 'True'
 
-RESTRICT_REQUIREMENTS = ">=2019.2.0.dev0"
+version = setuptools_scm.get_version().split(".")
+RESTRICT_REQUIREMENTS = ">=" + version[0] + "." + version[1] + ".0"
+print(RESTRICT_REQUIREMENTS)
 
 if on_rtd:
     REQUIREMENTS = []
@@ -18,6 +21,7 @@ else:
     REQUIREMENTS = [
         "numpy",
         "cffi",
+        "fenics-fiat{}".format(RESTRICT_REQUIREMENTS),
         "fenics-ufl{}".format(RESTRICT_REQUIREMENTS),
     ]
 
