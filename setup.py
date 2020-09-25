@@ -18,7 +18,6 @@ else:
     REQUIREMENTS = [
         "numpy",
         "cffi",
-        "fenics-fiat{}".format(RESTRICT_REQUIREMENTS),
         "fenics-ufl{}".format(RESTRICT_REQUIREMENTS),
     ]
 
