@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies (Python)
         run: |
           pip install --upgrade pip
-          pip install pygraphviz
+          pip install pygraphviz wheel
           pip install git+https://github.com/chrisrichardson/fiat.git --user
           pip install git+https://github.com/chrisrichardson/ufl.git --user
       - name: Lint with flake8
