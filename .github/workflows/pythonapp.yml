@@ -44,8 +44,8 @@ jobs:
           pydocstyle .
       - name: Install ffcx
         run: |
-          ls -l .git
           git describe --tags
+          pip install setuptools_scm
           pip install .
       - name: Run units tests
         run: |
