@@ -19,7 +19,7 @@ import pprint
 import textwrap
 from collections import namedtuple
 
-from ffcx.version import __version__ as FFCX_VERSION
+from ffcx import __version__ as FFCX_VERSION
 
 logger = logging.getLogger("ffcx")
 
