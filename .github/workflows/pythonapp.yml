@@ -44,7 +44,7 @@ jobs:
           pydocstyle .
       - name: Install ffcx
         run: |
-          pip install .
+          pip install . --no-deps
       - name: Run units tests
         run: |
           pip install pytest pytest-xdist
