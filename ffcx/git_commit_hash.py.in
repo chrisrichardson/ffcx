@@ -7,4 +7,4 @@
 
 def git_commit_hash():
     """Return git changeset hash (returns "unknown" if changeset is not known)."""
-    return "@GIT_COMMIT_HASH"
+    return "$GIT_COMMIT_HASH"

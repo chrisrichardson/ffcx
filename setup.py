@@ -83,8 +83,9 @@ def get_git_commit_hash():
 def write_config_file(infile, outfile, variables={}):
     """Write config file based on template."""
 
+    print(variables)
     class AtTemplate(string.Template):
-        delimiter = "@"
+        delimiter = "$"
 
     s = AtTemplate(open(infile, "r").read())
     s = s.substitute(**variables)
@@ -97,7 +98,15 @@ def generate_git_hash_file(GIT_COMMIT_HASH):
     write_config_file(
         os.path.join("ffcx", "git_commit_hash.py.in"),
         os.path.join("ffcx", "git_commit_hash.py"),
-        variables=dict(GIT_COMMIT_HASH=GIT_COMMIT_HASH))
+        variables={'GIT_COMMIT_HASH': GIT_COMMIT_HASH})
+
+
+def generate_ufc_h_file(version):
+    """Generate ufc.h with version."""
+    write_config_file(
+        os.path.join("ffcx", "codegeneration", "ufc.h.in"),
+        os.path.join("ffcx", "codegeneration", "ufc.h"),
+        variables={'UFC_VERSION': version})
 
 
 def run_install():
@@ -112,6 +121,8 @@ def run_install():
     # Generate module with git hash from template
     generate_git_hash_file(GIT_COMMIT_HASH)
 
+    generate_ufc_h_file(get_git_tag())
+
     # Call distutils to perform installation
     setuptools.setup(
         name="fenics-ffcx",
@@ -121,7 +132,7 @@ def run_install():
         license="LGPL version 3 or later",
         author_email="fenics-dev@googlegroups.com",
         maintainer_email="fenics-dev@googlegroups.com",
-        use_scm_version={'parentdir_prefix_version': 'fenics-ffcx-'},
+        use_scm_version={'parentdir_prefix_version': 'ffcx-'},
         setup_requires=["setuptools_scm"],
         url="https://github.com/FEniCS/ffcx/",
         platforms=["Windows", "Linux", "Solaris", "Mac OS-X", "Unix"],
