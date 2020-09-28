@@ -3,29 +3,18 @@ import sys
 import subprocess
 import string
 import setuptools
+import setuptools_scm
 
 if sys.version_info < (3, 6):
     print("Python 3.6 or higher required, please upgrade.")
     sys.exit(1)
 
-
-def get_git_tag():
-    """Return latest tag in repository."""
-    try:
-        tag = subprocess.check_output(['git', 'describe', '--abbrev=0'])
-    except (OSError, subprocess.CalledProcessError) as e:
-        print('Retrieving git tag did not succeed with exception:')
-        print('"{}"'.format(e))
-        print()
-        print('Tag will be set to "2019.1.0"!')
-        return "2019.1.0"
-    else:
-        return tag.decode('utf-8').strip()
-
-
 on_rtd = os.environ.get('READTHEDOCS') == 'True'
 
-RESTRICT_REQUIREMENTS = ">=" + get_git_tag()
+TAG_VERSION = setuptools_scm.get_version(parentdir_prefix_version='ffcx-',
+                                         version_scheme='post-release').split(".", 3)[:3]
+TAG_VERSION = '.'.join(TAG_VERSION)
+RESTRICT_REQUIREMENTS = ">=" + TAG_VERSION
 print(RESTRICT_REQUIREMENTS)
 
 if on_rtd:
@@ -121,7 +110,7 @@ def run_install():
     # Generate module with git hash from template
     generate_git_hash_file(GIT_COMMIT_HASH)
 
-    generate_ufc_h_file(get_git_tag())
+    generate_ufc_h_file(TAG_VERSION)
 
     # Call distutils to perform installation
     setuptools.setup(
