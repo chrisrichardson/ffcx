@@ -46,13 +46,12 @@ jobs:
           pydocstyle .
       - name: Install ffcx
         run: |
-          pip install setuptools_scm --user
-          pip install . --user
+          pip install setuptools_scm
+          pip install .
       - name: Run units tests
         run: |
-          pwd
           echo $PATH
-          ls -l ~/.local/bin
+          which ffcx
           pip install pytest pytest-xdist
           pytest -n auto .
         working-directory: test
