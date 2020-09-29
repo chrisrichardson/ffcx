@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies (Python)
         run: |
           pip install --upgrade pip
-          pip install pygraphviz wheel
+          pip install pygraphviz wheel setuptools_scm
           pip install git+https://github.com/chrisrichardson/fiat.git --user
           pip install git+https://github.com/chrisrichardson/ufl.git --user
       - name: Lint with flake8
@@ -46,12 +46,9 @@ jobs:
           pydocstyle .
       - name: Install ffcx
         run: |
-          pip install setuptools_scm
           pip install .
       - name: Run units tests
         run: |
-          echo $PATH
-          which ffcx
           pip install pytest pytest-xdist
           pytest -n auto .
         working-directory: test
