@@ -48,12 +48,14 @@ jobs:
         run: |
           pip install setuptools_scm --user
           pip install . --user
-          ls -lR ~/.local/lib/python3.*/site-packages/ffcx
       - name: Run units tests
         run: |
+          pwd
+          echo $PATH
+          ls -l ~/.local/bin
           pip install pytest pytest-xdist
-          cd test
           pytest -n auto .
+        working-directory: test
       - name: Runs demos
         run: |
           ffcx demo/*.ufl
