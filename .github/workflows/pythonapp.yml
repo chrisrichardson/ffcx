@@ -52,7 +52,8 @@ jobs:
       - name: Run units tests
         run: |
           pip install pytest pytest-xdist
-          pytest -n auto test
+          cd test
+          pytest -n auto .
       - name: Runs demos
         run: |
           ffcx demo/*.ufl
