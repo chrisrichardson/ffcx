@@ -27,7 +27,7 @@ else:
         "fenics-ufl{}".format(RESTRICT_REQUIREMENTS),
     ]
 
-ENTRY_POINTS = {'console_scripts': ['ffcx = ffcx.__main__:main', 'ffcx-3 = ffcx.__main__:main']}
+ENTRY_POINTS = {'console_scripts': ['ffcx = ffcx.__main__:main']}
 
 AUTHORS = """\
 Anders Logg, Kristian Oelgaard, Marie Rognes, Garth N. Wells,
@@ -133,7 +133,8 @@ def run_install():
             "ffcx.ir.analysis",
         ],
         package_dir={"ffcx": "ffcx"},
-        package_data={"ffcx": [os.path.join('codegeneration', '*.h')]},
+        package_data={"ffcx": [os.path.join('codegeneration', 'ufc.h'),
+                               os.path.join('codegeneration', 'ufc_geometry.h')]},
         entry_points=entry_points,
         install_requires=REQUIREMENTS,
         zip_safe=False)
