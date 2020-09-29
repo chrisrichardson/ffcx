@@ -48,7 +48,7 @@ jobs:
         run: |
           pip install setuptools_scm
           pip install .
-	  ls -lR ~/.local/lib/python3.8/site-packages/ffcx
+          ls -lR ~/.local/lib/python3.8/site-packages/ffcx
       - name: Run units tests
         run: |
           pip install pytest pytest-xdist
