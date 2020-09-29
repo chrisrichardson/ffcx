@@ -110,7 +110,7 @@ def run_install():
     # Generate module with git hash from template
     generate_git_hash_file(GIT_COMMIT_HASH)
 
-    #    generate_ufc_h_file(TAG_VERSION)
+    generate_ufc_h_file(TAG_VERSION)
 
     # Call distutils to perform installation
     setuptools.setup(
